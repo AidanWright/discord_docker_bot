@@ -32,4 +32,4 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
       with:
-        args: 'El proyecto {{ EVENT_PAYLOAD.repository.full_name }} ha sido subido a docker hub.'
+        args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been uploaded to Docker Hub.'
