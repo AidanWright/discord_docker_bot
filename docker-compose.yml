@@ -1,0 +1,12 @@
+services:
+  discord-bot:
+      container_name: discord_docker_bot
+      image: aidanwright001/discord_docker_bot:latest
+      environment:
+         - DISCORD_TOKEN=<DISCORD_TOKEN>
+         - DISCORD_CHANNEL=<DISCORD_CHANNEL_ID>
+         - LOG_LEVEL=INFO # Set log level to DEBUG, INFO, WARNING, ERROR, or CRITICAL
+         - BOT_PREFIX=/
+      volumes:
+         - /var/run/docker.sock:/var/run/docker.sock
+      restart: unless-stopped

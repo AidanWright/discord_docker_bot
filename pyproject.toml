@@ -1,0 +1,27 @@
+[project]
+name = "discord-docker-bot"
+version = "0.1.0"
+description = "Discord bot to manage docker containers"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "discord-py>=2.6.4",
+    "docker>=7.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+    "ruff>=0.14.13",
+]
+
+[tool.ruff.lint]
+preview = false
+extend-select = [
+  "UP",  # pyupgrade
+  "Q", # flake8-quotes
+  "F",
+  "E",
+  "W",
+  "PL",
+]
