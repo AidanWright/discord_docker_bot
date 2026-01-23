@@ -18,7 +18,7 @@ This Discord bot allows you to manage Docker containers directly from a Discord 
 
 ### 2. Environment Variables:
 - `DISCORD_TOKEN`: The token for your Discord bot.
-
+- `LOG_LEVEL`: Either `DEBUG`, `INFO`, `WARNING`, `ERROR`, or `CRITICAL`. If not set, defaults to `INFO` 
 ### 3. Configuration with `docker-compose`:
 Here’s an example of how to configure the bot using `docker-compose`:
 
@@ -29,6 +29,7 @@ services:
       image: manucarcor/discord_docker_bot:latest
       environment:
          - DISCORD_TOKEN=your_discord_token
+         - LOG_LEVEL=INFO
       volumes:
          - /var/run/docker.sock:/var/run/docker.sock
       restart: unless-stopped
