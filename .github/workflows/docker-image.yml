@@ -16,12 +16,15 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
       
+    - name: Set timestamp
+      id: vars
+      run: echo "timestamp=$(date +%s)" >> $GITHUB_ENV
       
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
         image: aidanwright001/discord_docker_bot
-        tags: 1.$(date +%s), latest
+        tags: 1.${{ env.timestamp }},latest
         registry: docker.io
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
