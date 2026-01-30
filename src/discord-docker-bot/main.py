@@ -52,7 +52,7 @@ async def on_interaction(interaction: discord.Interaction):
 
     action, container_name = custom_id.split("_", 1)
 
-    if action not in ["start", "stop", "restart"]:
+    if action not in ["start", "stop", "restart", "logs"]:
         return
 
     await docker_manager.manager.handle_container_action(

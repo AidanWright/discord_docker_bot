@@ -25,4 +25,11 @@ def create_container_view(container_name):
             custom_id=f"restart_{container_name}",
         )
     )
+    view.add_item(
+        discord.ui.Button(
+            label="Logs",
+            style=discord.ButtonStyle.grey,
+            custom_id=f"logs_{container_name}",
+        )
+    )
     return view
