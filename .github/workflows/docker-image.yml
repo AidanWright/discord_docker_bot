@@ -20,15 +20,24 @@ jobs:
       id: vars
       run: echo "timestamp=$(date +%s)" >> $GITHUB_ENV
       
-    - name: Build & push Docker image
-      uses: mr-smithers-excellent/docker-build-push@v6
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
       with:
-        image: aidanwright001/discord_docker_bot
-        tags: 1.${{ env.timestamp }},latest
-        registry: docker.io
-        dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+      
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        platforms: linux/amd64,linux/arm64
+        tags: |
+          aidanwright001/discord_docker_bot:1.${{ env.timestamp }}
+          aidanwright001/discord_docker_bot:latest
 
     - name: Discord notification
       env:
